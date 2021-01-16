@@ -1,0 +1,31 @@
+20:34:09 **** Incremental Build of configuration Debug for project audio ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303x8 -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:111:44: warning: passing argument 3 of 'HAL_DAC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+   HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint16_t*)samples, LENGTH_SAMPLES, DAC_ALIGN_12B_R);
+                                            ^
+In file included from ../Core/Inc/stm32f3xx_hal_conf.h:242:0,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dac.h:435:19: note: expected 'uint32_t * {aka long unsigned int *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_DAC_Start_DMA(DAC_HandleTypeDef* hdac, uint32_t Channel, uint32_t* pData, uint32_t Length, uint32_t Alignment);
+                   ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "audio.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\User1\STM32CubeIDE\workspace_1.5.0\audio\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="audio.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: audio.elf
+ 
+arm-none-eabi-objdump -h -S  audio.elf  > "audio.list"
+arm-none-eabi-objcopy  -O binary  audio.elf  "audio.bin"
+arm-none-eabi-size   audio.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37016	     20	   1732	  38768	   9770	audio.elf
+Finished building: default.size.stdout
+ 
+Finished building: audio.bin
+ 
+Finished building: audio.list
+ 
+
+20:34:12 Build Finished. 0 errors, 1 warnings. (took 2s.794ms)
+

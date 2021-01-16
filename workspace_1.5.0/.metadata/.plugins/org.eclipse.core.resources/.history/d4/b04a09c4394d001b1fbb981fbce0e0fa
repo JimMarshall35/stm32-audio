@@ -1,0 +1,31 @@
+/*
+ ============================================================================
+ Name        : blankproj.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void initGPIO(void);
+int main(void) {
+	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+	return EXIT_SUCCESS;
+}
+void initGPIO(){
+	  GPIO_InitTypeDef GPIO_InitStruct;
+	  /* GPIO Ports Clock Enable */
+	  __GPIOC_CLK_ENABLE();
+	  __GPIOD_CLK_ENABLE();
+	  __GPIOA_CLK_ENABLE();
+	  __GPIOB_CLK_ENABLE();
+	  /*Configure GPIO pin : B1_Pin */
+	  GPIO_InitStruct.Pin = B1_Pin;
+	  GPIO_InitStruct.Mode = GPIOIO_MODE_OUTPUT_PP;
+	  GPIO_InitStruct.Pull = GPIO_NOPULL;
+	  HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
+}
