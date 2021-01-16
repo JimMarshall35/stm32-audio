@@ -10,6 +10,6 @@ python script to turn the samples_data.txt file exported from audacity into a c 
 There's also a some code i've written to control shift registers, allowing 16 LEDS to be controlled from only three pins using two shift registers. 
 This will form the basis of a tr-606  style sequencer for a drum machine
 
-Unlike atmel studio STM's "cube" IDE will generate code for you to initialize any peripherals you might want to use using a GUI and comes with a hardware abstraction
+Unlike atmel studio, STM's "cube" IDE will generate code for you to initialize any peripherals you might want to use using a GUI and comes with a hardware abstraction
 library.
 
